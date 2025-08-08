@@ -1,0 +1,23 @@
+.navbarCorpo{
+    width: 100%;
+    height: 40px;
+    background-color: #303032;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    box-sizing:border-box ;
+    padding: 15px;
+}
+
+.testeVermelho{
+    width: 20px;
+    height: 20px;
+    background-color: red;
+}
+
+ul{
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    color: white
+}
