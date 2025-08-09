@@ -36,7 +36,10 @@ export const Paginacao: React.FC<PaginacaoProps> = ({
           <button
             key={i}
             onClick={() => irParaPagina(i)}
-            style={{
+            style={
+              
+              
+              {
               fontWeight: i === paginaAtual ? "bold" : "normal",
               background: i === paginaAtual ? "#ffa500" : "transparent",
               border: i === paginaAtual ? "none" : "solid 2px #ffa500",

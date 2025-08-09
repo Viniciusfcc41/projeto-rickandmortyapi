@@ -1,0 +1,49 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.mainCard{
+    display: flex;
+    width: 80vw;
+    height: 50vh;
+    border: solid 2px black;
+    border-radius: 15px;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.personagemInfo{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 60%;
+}
+
+.personagemInfo > p{
+    font-size: 20px;
+}
+
+.mainCard > img{
+    height: 80%;
+    border-radius: 15px;
+}
+
+
+#titulo{
+    margin-top: 45px;
+    font-size: 50px;
+}
+
+.episodiosContainer{
+    width: 100vw;
+    padding: 15px;
+}
+
+.episodioCard{
+    color: black;
+    width: 18%;
+}

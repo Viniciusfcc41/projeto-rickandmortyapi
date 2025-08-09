@@ -28,6 +28,7 @@ body{
     height: 180px;
     background-color: #ffffff;
     transition: 0.5s;
+    color: black;
 }
 
 .personagemInfo{

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import type { Personagem } from "../../shared/types/personagem";
 import "../../style/listaPersonagens.css";
 import { Paginacao } from "../../shared/paginacao";
+import { Link } from "react-router-dom";
 
 export const ListaPersonagens = () => {
   const [personagens, setPersonagens] = useState<Personagem[]>([]);
@@ -36,9 +37,12 @@ export const ListaPersonagens = () => {
       <h1>Characters</h1>
 
       <div className="personagensContainer">
+       
         {personagens.length ? (
           personagens.map((personagem) => (
-            <div key={personagem.id} className="personagemCard">
+            
+            <Link to={`/personagem/${personagem.id}`} key={personagem.id} className="personagemCard">
+            
               <img src={personagem.image} className="fotoPersonagem" />
               <div className="personagemInfo">
                 <h3>{personagem.name}</h3>
@@ -49,11 +53,15 @@ export const ListaPersonagens = () => {
               
 
               </div>
-            </div>
+              
+            
+            </Link>
+           
           ))
         ) : (
           <p>Nenhum personagem encontrado.</p>
         )}
+        
       </div>
 
       <Paginacao

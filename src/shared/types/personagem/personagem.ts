@@ -1,15 +1,14 @@
 export interface Personagem {
   id: number;
   name: string;
-  gender: string;
   status: string;
   species: string;
+  type: string;
+  gender: string;
+  origin: { name: string; url: string };
+  location: { name: string; url: string };
   image: string;
-  origin: {
-    name: string
-  };
-  location: {
-    name: string;
-  };
-  episode: string[]
+  episode: string[];
+  url: string;
+  created: string;
 }

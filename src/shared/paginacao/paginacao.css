@@ -17,8 +17,11 @@ button{
 
 .botoesNumerados{
     padding: 15px 20px;
+    transition: 0.5s;
 }
 
 .botoesNumerados:hover{
     cursor: pointer;
+    background-color: #ffa500 ;
+    color: white;
 }

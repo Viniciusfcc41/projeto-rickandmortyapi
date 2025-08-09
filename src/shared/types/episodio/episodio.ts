@@ -3,5 +3,6 @@ export interface Episodio{
     name: string;
     air_date: string;
     episode: string;
-    characters: string[]
+    characters: string[];
+    url: string
 }

@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import type { Episodio } from "../../shared/types/episodio";
 import "../../style/listaEpisodios.css"
 import { Paginacao } from "../../shared/paginacao";
+import { Link } from "react-router-dom";
+
 
 export const ListaEpisodios = () =>{
       const [episodios, setEpisodios] = useState<Episodio[]>([]);
@@ -44,15 +46,13 @@ export const ListaEpisodios = () =>{
         <div className="episodiosContainer">
       {episodios?.length ? (
           episodios.map((episodio) => (
-
-            <div className="episodioCard">
+       
+            <Link to={`/episodio/${episodio.id}` } key={episodio.id} className="episodioCard">
                  <h3>{episodio.name}</h3>
                  <p> <span>Air Date:</span> {episodio.air_date}</p>
                  <p> <span>Episode:</span> {episodio.episode}</p>
-            </div>
+            </Link>
         
-
-
           ))
         ) : (
           <p>Nenhum episódio encontrado.</p>
