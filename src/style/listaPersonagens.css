@@ -1,0 +1,67 @@
+body{
+    background-color: #fcfcfc;
+}
+
+.personagensContainer{
+    display: flex;
+    flex-wrap:wrap;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.fotoPersonagem{
+    width: 45%;
+}
+
+.personagemCard{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 2px #000000;
+    overflow: hidden;
+    border-radius: 15px;
+    width: 420px;
+    height: 180px;
+    background-color: #ffffff;
+    transition: 0.5s;
+}
+
+.personagemInfo{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;  
+    align-items: start;
+    justify-content: start;
+    text-align: start;
+    
+}
+
+.personagemInfo>h3{
+    text-align: center;
+}
+
+.personagemCard:hover{
+    scale: 1.02;
+    cursor: pointer;
+    box-shadow: #000000 0px 1px 20px;
+}
+
+.personagemInfo > h3{
+    align-self:center;
+    padding: 0;
+}
+
+.personagemInfo > p{
+    padding-left: 10px;
+}
+
+span{
+    font-weight: 600;
+}
+
+

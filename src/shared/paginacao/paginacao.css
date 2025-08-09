@@ -1,0 +1,24 @@
+.teste{
+    margin: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+button{
+    padding: 15px 25px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    font-weight: 600;
+    border-radius: 100px;
+}
+
+.botoesNumerados{
+    padding: 15px 20px;
+}
+
+.botoesNumerados:hover{
+    cursor: pointer;
+}
