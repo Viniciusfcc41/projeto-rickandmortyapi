@@ -1,13 +1,12 @@
-import "./navbar.css"
+import style from "./navbar.module.css"
 
 export const Navbar = ()=>{
     return(
-        <div className="navbarCorpo">
-            <div className="testeVermelho"></div>
+        <div className={style.navbarCorpo}>
             <ul>
-               <a href="/"><li>Personagens</li></a> 
-               <a href="/episodios"><li>Episódios</li></a>
-               <a href="/locais"><li>Localizações</li></a> 
+               <a href="/"><li>Characters</li></a> 
+               <a href="/episodios"><li>Episodes</li></a>
+               <a href="/locais"><li>Locations</li></a> 
             </ul>
         </div>
     )

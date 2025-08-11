@@ -1,8 +1,23 @@
-h1{
-    padding-top: 40px;
+.body{
+    padding-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px
 }
 
-.episodiosContainer{
+#logo{
+    width: 30%;
+}
+
+#titulo{
+    color: white;
+    padding: 0;
+}
+
+
+.locaisContainer{
     display: flex;
     flex-wrap:wrap;
     gap: 20px;
@@ -10,10 +25,10 @@ h1{
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    padding: 10px;
+    padding:5px;
 }
 
-.episodioCard{
+.localCard{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,11 +39,14 @@ h1{
     border: solid 2px black;
     border-radius: 15px;
     transition: 0.5s;
+    background-color: white;
+    color:black
 }
-
 .episodioCard:hover{
     scale: 1.02;
     cursor: pointer;
+    box-shadow: #000000 0px 1px 20px;
+
 }
 
 span{

@@ -1,15 +1,14 @@
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import type { Personagem } from "../../shared/types/personagem";
 import type { Episodio } from "../../shared/types/episodio";
 import { useEffect, useState } from "react";
 import { fetchDetalheEpisodio } from "../../service/fetch-detalhe-episodio";
-import "../../style/detalheEpisodio.css";
+import style from "../../style/detalheEpisodio.module.css"
 
 interface EpisodioDetalhes extends Episodio {}
 
 export const DetalheEpisodio = () => {
       const { id } = useParams();
-      const navigate = useNavigate();
       const [episodio, setEpisodio] = useState<EpisodioDetalhes | null>(null);
       const [personagens, setPersonagens] = useState<Personagem[]>([]);
       const [loading, setLoading] = useState(true);
@@ -47,11 +46,40 @@ export const DetalheEpisodio = () => {
       if (!episodio) return <p>Episódio não encontrado.</p>;
 
       return(
-        <div className="main">
-        <h2 id="titulo">Episode details</h2>
-        <div className="mainCard">
-            <h1>{episodio.name}</h1>
+        <div className={style.body}>
+        <h1 className={style.titulo}>Episode details</h1>
+        <div className={style.episodioCard}>
+            <h1 className={style.titulo}>{episodio.name}</h1>
+            <div>
+               <p className={style.paragrafo}><strong>Air Date:</strong> {episodio.air_date}</p>
+               <p className={style.paragrafo}><strong>Episode:</strong> {episodio.episode}</p>
+            </div>
+
         </div>
+
+      <h2 className={style.titulo}>{episodio.name} features the following characters:</h2>
+      <div className={style.personagensContainer}>
+        {personagens.length ? (
+          personagens.map((personagem) => (
+            <Link to={`/personagem/${personagem.id}`} key={personagem.id} className={style.personagemCard}>    
+              <img src={personagem.image} className={style.fotoPersonagem} />
+              <div className={style.personagemInfo}>
+                <h3>{personagem.name}</h3>           
+                <p><span>Species:</span> {personagem.species}</p>
+                <p><span>Status:</span> {personagem.status}</p>
+                <p><span>Location:</span> {personagem.location.name}</p>
+              </div>
+              </Link>
+          ))
+        ) : (
+          <p>Este episódio não tem personagens.</p>
+        )}
+      </div>
         </div>
       )
 }
+
+/*
+
+
+*/

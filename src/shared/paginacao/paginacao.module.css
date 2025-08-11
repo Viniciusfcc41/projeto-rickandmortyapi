@@ -1,4 +1,4 @@
-.teste{
+.botoesContainer{
     margin: 5px;
     display: flex;
     align-items: center;
@@ -6,22 +6,40 @@
     gap: 10px;
 }
 
-button{
+.ellipsis{
+    color: white
+}
+
+.botoesPadrao{
     padding: 15px 25px;
     border: none;
     background-color: #007bff;
     color: white;
     font-weight: 600;
     border-radius: 100px;
+    color: white;
+    transition: 0.5s;
+}
+
+.botoesPadrao:hover{
+    cursor: pointer;
+    background-color: #005fc4;
 }
 
 .botoesNumerados{
     padding: 15px 20px;
     transition: 0.5s;
+    border-radius: 100px;
+    background-color: #ffa500;
+    color: white;
+
 }
 
 .botoesNumerados:hover{
     cursor: pointer;
-    background-color: #ffa500 ;
-    color: white;
+    background-color: #d58b00;
+}
+
+.botoesNumerados:disabled{
+    background-color: transparent;
 }

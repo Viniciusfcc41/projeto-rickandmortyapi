@@ -4,7 +4,7 @@
     background-color: #303032;
     display: flex;
     align-items: center;
-    justify-content:space-between;
+    justify-content:center;
     box-sizing:border-box ;
     padding: 15px;
     position: fixed;
@@ -20,7 +20,7 @@
 ul{
     list-style: none;
     display: flex;
-    gap: 10px;
+    gap: 20px;
     color: white
 }
 

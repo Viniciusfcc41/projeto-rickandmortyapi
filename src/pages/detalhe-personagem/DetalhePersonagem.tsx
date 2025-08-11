@@ -1,15 +1,14 @@
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import type { Personagem } from "../../shared/types/personagem";
 import type { Episodio } from "../../shared/types/episodio";
 import { useEffect, useState } from "react";
 import { fetchDetalhePersonagem } from "../../service/fetch-detalhe-personagem";
-import "../../style/detalhePersonagem.css";
+import style from "../../style/detalhePersonagem.module.css";
 
 interface PersonagemDetalhes extends Personagem {}
 
 export const DetalhePersonagem = () => {
   const { id } = useParams();
-  const navigate = useNavigate();
   const [personagem, setPersonagem] = useState<PersonagemDetalhes | null>(null);
   const [episodios, setEpisodios] = useState<Episodio[]>([]);
   const [loading, setLoading] = useState(true);
@@ -25,7 +24,6 @@ export const DetalhePersonagem = () => {
         const data = await fetchDetalhePersonagem(id);
         setPersonagem(data);
 
-        // Buscar detalhes de todos os episódios
         if (data.episode?.length) {
           const episodiosData = await Promise.all(
             data.episode.map((url: string) =>
@@ -47,40 +45,50 @@ export const DetalhePersonagem = () => {
   if (!personagem) return <p>Personagem não encontrado.</p>;
 
   return (
-    <div className="main">
-      <h2 id="titulo">Character details</h2>
-      <div className="mainCard">
-        <div className="personagemInfo">
-          <h1>{personagem.name}</h1>
-          <p><strong>Espécie:</strong> {personagem.species}</p>
-          <p><strong>Gênero:</strong> {personagem.gender}</p>
-          <p><strong>Status:</strong> {personagem.status}</p>
-          <p><strong>Origem:</strong> {personagem.origin.name}</p>
-          <p><strong>Localização:</strong> {personagem.location.name}</p>
+    <div className={style.body}>
+      <h1 id={style.titulo}>Character details</h1>
+      <div className={style.personagemCard}>
+        <div className={style.personagemInfo}>
+          <h1 id={style.titulo}>{personagem.name}</h1>
+          <div>
+          <p className={style.paragrafo}><strong>Status:</strong> {personagem.status}</p>
+          <p className={style.paragrafo}><strong>Gender:</strong> {personagem.gender}</p>
+          <p className={style.paragrafo}><strong>Species:</strong> {personagem.species}</p>
+          <p className={style.paragrafo}><strong>Location:</strong> {personagem.location.name}</p>
+          <p className={style.paragrafo}><strong>Origin:</strong> {personagem.origin.name}</p>
+          </div>
+
+        
         </div>
-        <img src={personagem.image} />
+        <img src={personagem.image} className={style.image} />
       </div>
 
-      <h2>{personagem.name} appears in the following episodes</h2>
-      <div className="episodiosContainer">
+
+
+      
+      <h2 id={style.titulo}>{personagem.name} appears in the following episodes:</h2>
+      <div className={style.episodiosContainer}>
         {episodios.length ? (
           episodios.map((episodio) => (
             <Link
               key={episodio.id}
               to={`/episodio/${episodio.id}`}
-              className="episodioCard"
+              className={style.episodioCard}
             >
               <h3>{episodio.name}</h3>
-              <p><span>Air Date:</span> {episodio.air_date}</p>
-              <p><span>Episode:</span> {episodio.episode}</p>
+              <div>
+                <p><strong>Air Date:</strong> {episodio.air_date}</p>
+                <p><strong>Episode:</strong> {episodio.episode}</p>
+              </div>
+              
             </Link>
           ))
         ) : (
-          <p>Este personagem não aparece em nenhum episódio listado.</p>
+          <p>Este personagem não aparece em nenhum episódio.</p>
         )}
       </div>
 
-      <button onClick={() => navigate(-1)}>Voltar</button>
+      
     </div>
   );
 };

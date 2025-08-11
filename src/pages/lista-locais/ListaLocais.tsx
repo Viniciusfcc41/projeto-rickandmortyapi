@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import type { Local } from "../../shared/types/local";
-import "../../style/listaLocais.css"
+import style from "../../style/listaLocais.module.css"
 import { Paginacao } from "../../shared/paginacao";
+import { Link } from "react-router-dom";
 
 
 export const ListaLocais = () =>{
@@ -40,20 +41,19 @@ export const ListaLocais = () =>{
   if (error) return <p>Erro ao carregar locais.</p>;
 
   return(
-    <div>
-        <h1>Locations</h1>
-        <div className="episodiosContainer">
+    <div className={style.body}>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Rick_and_Morty.svg" id={style.logo} />
+      
+        <h1 id={style.titulo}>Locations</h1>
+        <div className={style.locaisContainer}>
       {locais?.length ? (
           locais.map((local) => (
-
-            <div className="episodioCard">
+            <Link to={`/local/${local.id}`} key={local.id} className={style.localCard}>
                  <h3>{local.name}</h3>
                  <p><span>Dimension:</span> {local.dimension}</p>
                  <p><span>Type:</span> {local.type}</p>
-            </div>
+            </Link>
         
-
-
           ))
         ) : (
           <p>Nenhum local encontrado.</p>

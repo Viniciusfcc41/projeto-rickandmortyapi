@@ -4,6 +4,7 @@ import { ListaEpisodios } from "./pages/lista-episodios"
 import { ListaLocais } from "./pages/lista-locais";
 import { DetalhePersonagem } from "./pages/detalhe-personagem";
 import { DetalheEpisodio } from "./pages/detalhe-episodio";
+import { DetalheLocal } from "./pages/detalhe-local";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { Navbar } from "./shared/navbar"
@@ -22,7 +23,7 @@ function App() {
           <Route path="/locais" element={<ListaLocais />} />
           <Route path="/personagem/:id" element={<DetalhePersonagem />} />
           <Route path="/episodio/:id" element={<DetalheEpisodio />} />
-
+          <Route path="/local/:id" element={<DetalheLocal />} />
         </Routes>
       </BrowserRouter>
     </>

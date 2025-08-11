@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import type { Personagem } from "../../shared/types/personagem";
-import "../../style/listaPersonagens.css";
+import style from "../../style/listaPersonagens.module.css"
 import { Paginacao } from "../../shared/paginacao";
 import { Link } from "react-router-dom";
 
@@ -33,29 +33,25 @@ export const ListaPersonagens = () => {
   if (error) return <p>Erro ao carregar personagens.</p>;
 
   return (
-    <div>
-      <h1>Characters</h1>
-
-      <div className="personagensContainer">
+    <div className={style.body}>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Rick_and_Morty.svg" id={style.logo} />
+      
+      <h1 id={style.titulo}>Characters</h1>
+    
+      <div className={style.personagensContainer}>
        
         {personagens.length ? (
           personagens.map((personagem) => (
             
-            <Link to={`/personagem/${personagem.id}`} key={personagem.id} className="personagemCard">
-            
-              <img src={personagem.image} className="fotoPersonagem" />
-              <div className="personagemInfo">
-                <h3>{personagem.name}</h3>
-            
+            <Link to={`/personagem/${personagem.id}`} key={personagem.id} className={style.personagemCard}>    
+              <img src={personagem.image} className={style.fotoPersonagem} />
+              <div className={style.personagemInfo}>
+                <h3>{personagem.name}</h3>           
                 <p><span>Species:</span> {personagem.species}</p>
-                <p><span>Gender:</span> {personagem.gender}</p>
+                <p><span>Status:</span> {personagem.status}</p>
                 <p><span>Location:</span> {personagem.location.name}</p>
-              
-
               </div>
-              
-            
-            </Link>
+              </Link>
            
           ))
         ) : (

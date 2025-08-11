@@ -1,4 +1,4 @@
-import "./paginacao.css"
+import style from "./paginacao.module.css"
 
 interface PaginacaoProps {
   paginaAtual: number;
@@ -36,17 +36,14 @@ export const Paginacao: React.FC<PaginacaoProps> = ({
           <button
             key={i}
             onClick={() => irParaPagina(i)}
-            style={
-              
-              
+            style={            
               {
               fontWeight: i === paginaAtual ? "bold" : "normal",
               background: i === paginaAtual ? "#ffa500" : "transparent",
-              border: i === paginaAtual ? "none" : "solid 2px #ffa500",
-              color: i === paginaAtual ? "#fff" : "#000",
-            }}
-            className="botoesNumerados"
-          >
+              border: i === paginaAtual ? "none" : "solid 2px #ffa500",    
+            }
+          }
+            className={style.botoesNumerados}>
             {i}
           </button>
         );
@@ -54,7 +51,7 @@ export const Paginacao: React.FC<PaginacaoProps> = ({
         (i === paginaAtual - 2 && i > 2) ||
         (i === paginaAtual + 2 && i < totalPaginas - 1)
       ) {
-        botoes.push(<span key={`ellipsis-${i}`}>...</span>);
+        botoes.push(<span key={`ellipsis-${i}`} className={style.ellipsis}>...</span>);
       }
     }
 
@@ -62,17 +59,10 @@ export const Paginacao: React.FC<PaginacaoProps> = ({
   };
 
   return (
-    <div className="teste">
-      <button onClick={irParaPaginaAnterior} disabled={paginaAtual === 1}>
-        Anterior
-      </button>
+    <div className={style.botoesContainer}>
+      <button onClick={irParaPaginaAnterior} disabled={paginaAtual === 1} className={style.botoesPadrao}>Previous</button>
       {gerarBotoesPaginacao()}
-      <button
-        onClick={irParaProximaPagina}
-        disabled={paginaAtual === totalPaginas}
-      >
-        Próxima
-      </button>
+      <button onClick={irParaProximaPagina} disabled={paginaAtual === totalPaginas} className={style.botoesPadrao}>Next</button>
     </div>
   );
 };

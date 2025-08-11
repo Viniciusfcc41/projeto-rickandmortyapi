@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import type { Episodio } from "../../shared/types/episodio";
-import "../../style/listaEpisodios.css"
 import { Paginacao } from "../../shared/paginacao";
 import { Link } from "react-router-dom";
+import style from "../../style/listaEpisodios.module.css"
 
 
 export const ListaEpisodios = () =>{
@@ -41,16 +41,21 @@ export const ListaEpisodios = () =>{
   if (error) return <p>Erro ao carregar episódios.</p>;
 
   return(
-    <div>
-        <h1>Episodes</h1>
-        <div className="episodiosContainer">
+    <div className={style.body}>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Rick_and_Morty.svg" id={style.logo} />
+      
+        <h1 id={style.titulo}>Episodes</h1>
+        <div className={style.episodiosContainer}>
       {episodios?.length ? (
           episodios.map((episodio) => (
        
-            <Link to={`/episodio/${episodio.id}` } key={episodio.id} className="episodioCard">
+            <Link to={`/episodio/${episodio.id}` } key={episodio.id} className={style.episodioCard}>
                  <h3>{episodio.name}</h3>
-                 <p> <span>Air Date:</span> {episodio.air_date}</p>
-                 <p> <span>Episode:</span> {episodio.episode}</p>
+                 <div>
+                    <p> <strong>Air Date:</strong> {episodio.air_date}</p>
+                    <p> <strong>Episode:</strong> {episodio.episode}</p>
+                 </div>
+
             </Link>
         
           ))
